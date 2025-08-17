@@ -1,19 +1,21 @@
 #ifndef STACK_H
 #define STACK_H
-#include <stddef.h>
-#include "person.h"
 
-typedef struct {
-    Person *data;
-    size_t capacity;
-    size_t size; // top == size
+typedef struct Stack {
+    int *data;      // Pointer to the stack's data
+    int top;    // Current number of elements in the stack
+    int capacity; // Maximum number of elements the stack can hold
 } Stack;
 
-void   Stack_init(Stack *s, size_t capacity);
-size_t Stack_getsize(const Stack *s);
-int    Stack_addAtIndex(Stack *s, size_t index, Person value);        // 0..size
-int    Stack_removeAtIndex(Stack *s, size_t index, Person *outValue); // 0..size-1
-int    Stack_SearchValueAndReturnAtIndex(const Stack *s, int id);     // by id
-void   Stack_ClearAll(Stack *s);
+//Function declarations
+Stack* inti(); //Create a new stack
+int getsize(Stack *stack);//Get the current size of the stack
+int removeAtIndex(Stack *stack, int index); //Remove an element at a specific index
+int addAtIndex(Stack *stack, int index, int value); //Add an element at a specific index
+int SearchValueAndReturnAtIndex(Stack *stack, int value); //Search for a value and return its index
+void ClearAll(Stack *stack); //Clear all elements in the stack
 
-#endif
+//Support functions
+void printStack(Stack *stack); //Print the current elements in the stack
+
+#endif // STACK_H

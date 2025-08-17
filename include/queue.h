@@ -1,19 +1,23 @@
 #ifndef QUEUE_H
 #define QUEUE_H
-#include <stddef.h>
-#include "person.h"
 
-typedef struct {
-    Person *data;
-    size_t capacity;
-    size_t size;
+typedef struct Queue {
+    int *data;      // Pointer to the queue's data
+    int front;     // Index of the front element
+    int rear;      // Index of the rear element
+    int size;       // Current number of elements in the queue
+    int capacity;  // Maximum number of elements the queue can hold
 } Queue;
 
-void   Queue_init(Queue *q, size_t capacity);
-size_t Queue_getsize(const Queue *q);
-int    Queue_addAtIndex(Queue *q, size_t index, Person value);        // 0..size
-int    Queue_removeAtIndex(Queue *q, size_t index, Person *outValue); // 0..size-1
-int    Queue_SearchValueAndReturnAtIndex(const Queue *q, int id);
-void   Queue_ClearAll(Queue *q);
+// Function declarations
+Queue* init(); // Create a new queue
+int getSize(Queue *queue); // Get the current size of the queue
+int removeAtIndex(Queue *queue, int index); // Remove an element at a specific index
+int addAtIndex(Queue *queue, int index, int value); // Add an element at a specific index
+int searchValueAndReturnAtIndex(Queue *queue, int value); // Search for a value and return its index
+void clearAll(Queue *queue); // Clear all elements in the queue 
 
-#endif
+// Support functions
+void printQueue(Queue *queue); // Print the current elements in the queue
+
+#endif // QUEUE_H
