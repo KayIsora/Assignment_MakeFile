@@ -1,23 +1,25 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
-#include <stddef.h>
-#include "person.h"
 
 typedef struct Node {
-    Person value;
-    struct Node *next;
+    int data;              // Data stored in the node
+    struct Node *next;    // Pointer to the next node in the list
 } Node;
 
-typedef struct {
-    Node *head;
-    size_t size;
-} List;
+typedef struct LinkedList {
+    Node *head;           // Pointer to the first node in the list
+    int size;             // Current number of elements in the linked list
+} LinkedList;
 
-void   List_init(List *l);
-size_t List_getsize(const List *l);
-int    List_addAtIndex(List *l, size_t index, Person value);       // 0..size
-int    List_removeAtIndex(List *l, size_t index, Person *outValue);// 0..size-1
-int    List_SearchValueAndReturnAtIndex(const List *l, int id);    // by id
-void   List_ClearAll(List *l);
+// Function declarations
+LinkedList* init(); // Create a new linked list
+int getSize(LinkedList *list); // Get the current size of the linked list
+int removeAtIndex(LinkedList *list, int index); // Remove an element at a specific index
+int addAtIndex(LinkedList *list, int index, int value); // Add an element at a specific index
+int searchValueAndReturnAtIndex(LinkedList *list, int value); // Search for a value and return its index
+void clearAll(LinkedList *list); // Clear all elements in the linked list
 
-#endif
+// Support functions
+void printLinkedList(LinkedList *list); // Print the current elements in the linked list
+
+#endif // LINKEDLIST_H
