@@ -12,14 +12,13 @@ typedef struct LinkedList {
 } LinkedList;
 
 // Function declarations
-LinkedList* init(); // Create a new linked list
-int getSize(LinkedList *list); // Get the current size of the linked list
-int removeAtIndex(LinkedList *list, int index); // Remove an element at a specific index
-int addAtIndex(LinkedList *list, int index, int value); // Add an element at a specific index
-int searchValueAndReturnAtIndex(LinkedList *list, int value); // Search for a value and return its index
-void clearAll(LinkedList *list); // Clear all elements in the linked list
-
-// Support functions
+LinkedList* linkedlist_init(); // Create a new linked list
+int linkedlist_getSize(LinkedList *list); // Get the current size of the linked list
+int linkedlist_removeAtIndex(LinkedList *list, int index); // Remove an element at a specific index
+int linkedlist_addAtIndex(LinkedList *list, int index, int value); // Add an element at a specific index
+int linkedlist_searchValueAndReturnAtIndex(LinkedList *list, int value); // Search for a value and return its index
+void linkedlist_clearAll(LinkedList *list); // Clear all elements in the linked list    
 void printLinkedList(LinkedList *list); // Print the current elements in the linked list
+Node* getNodeAtIndex(LinkedList* list, int index); // Get node at a specific index
 
 #endif // LINKEDLIST_H
